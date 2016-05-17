@@ -1,0 +1,14 @@
+{
+	"server": {
+		"port": 3000
+	},
+	"webpackDevServer": {
+		"protocol": "http",
+		"hostname": "localhost",
+		"port": 8080,
+		"pathname": "assets/js"
+	},
+	"db": {
+		"use_env_variable": "DATABASE_URL"
+	}
+}

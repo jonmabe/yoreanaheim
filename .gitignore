@@ -1,0 +1,11 @@
+node_modules
+.DS_Store
+coverage
+config/local.json
+config/local.js
+config/*local.js
+config/*local.json
+config/*development.js*
+dist
+apidoc
+*.log

@@ -1,0 +1,2 @@
+app/build/**/*.js
+app/dist/**/*.js
