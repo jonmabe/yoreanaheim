@@ -1,4 +1,4 @@
-# Anaheim Gazeteer
+# Yore Anaheim
 
 ## Development
 
