@@ -16,6 +16,8 @@ export DATABASE_URL="postgres://postgresql:Postgres-1234@localhost:5432/gazettee
 
 
 ### Sequelize
+To setup postgres for the first time, run:
 ```
-sequelize db:migrate 
+sequelize db:migrate
+sequelize db:seed:all
 ```
