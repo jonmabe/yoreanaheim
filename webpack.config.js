@@ -47,6 +47,12 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new HtmlwebpackPlugin({
       title: 'Listlogs'
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.$': 'jquery',
+      'window.jQuery': 'jquery'
     })
   ]
 };
