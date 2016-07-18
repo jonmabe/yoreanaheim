@@ -4,9 +4,12 @@ import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
 
 import App from './components/App.jsx';
 import Publication from './components/Publication.jsx';
+import Publications from './components/Publications.jsx';
 
 const app = document.createElement('div');
+app.setAttribute('id', 'app');
 document.body.appendChild(app);
+
 
 const Index = React.createClass({
   render() {
@@ -23,9 +26,8 @@ const NotFound = React.createClass({
 render((
 	<Router history={browserHistory}>
 		<Route path="/" component={App}>
-			<IndexRoute component={Index} />
-			<Route path="publication/:id" component={Publication} />
-			<Route path="*" component={NotFound} />
+			<IndexRoute component={Publications} />
+			<Route path="/publication/:id" component={Publication} />
 		</Route>
 	</Router>
-), app);
+), document.getElementById('app'));
