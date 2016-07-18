@@ -6,7 +6,6 @@ export default class Publications extends React.Component {
 		super(props);
 	}
     render() {    
-    	console.log(1.1, this.props);
          return (
          	<div>
 	         	<h1>Publications</h1>

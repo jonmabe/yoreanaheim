@@ -3,7 +3,8 @@ export default class Publication extends React.Component {
 	constructor(props){
 		super(props);
 	}
-    render() {    
+    render() {
+    	console.log('here');
          return 
          	<div>
          		<h1>{this.props.publication.name}</h1>

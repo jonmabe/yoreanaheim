@@ -1,6 +1,7 @@
-import React from 'react';  
+import React from 'react';
 import $ from 'jquery';
 import Publications from './Publications.jsx';
+import Publication from './Publication.jsx';
 
 require('./App.scss');
 
@@ -13,7 +14,6 @@ export default class App extends React.Component {
 	}
 	componentDidMount() {
 		this.serverRequest = $.get('/api/publications', function (result) {
-			console.log(2,result);
 			var publications = result;
 			this.setState({ publications: publications });
 		}.bind(this));
@@ -24,7 +24,10 @@ export default class App extends React.Component {
 	}
 
   render() {
-  	console.log('render', this);
-    return <Publications publications={this.state.publications} />;
+    return (
+    	<div className="main">
+    		<Publications publications={this.state.publications} />
+    	</div>
+    );
   }
 }
