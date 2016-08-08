@@ -18,6 +18,8 @@ process.title = pkg.name;
 process.versions.app = pkg.version;
 app.poweredBy = false;
 
+var port = process.env.PORT || config.server.port;
+
 // add middleware
 app.use(logger());
 app.use(router.routes());
@@ -32,7 +34,6 @@ app.use(function *(){
 });
 
 // start server
-app.listen(config.server.port, function() {
-	console.log('listening on port ' + config.server.port);
+app.listen(port, function() {
+	console.log('listening on port ' + port);
 });
-
