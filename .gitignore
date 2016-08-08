@@ -9,3 +9,4 @@ config/*development.js*
 dist
 apidoc
 *.log
+app/build/*
