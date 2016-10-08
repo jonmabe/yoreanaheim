@@ -7,7 +7,7 @@ export default class PublicationItem extends React.Component {
 		super(props);
 	}
     render() {
-         var cleanUrl = slugify(this.props.publication.name.replace('_', ' ')).toLowerCase();
-         return <Link to={`/publication/${cleanUrl}_${this.props.publication.id}`}>{this.props.publication.name}</Link>;
+         var slug = slugify(this.props.publication.name.replace('_', ' ')).toLowerCase();
+         return <Link to={`/publication/${slug}_${this.props.publication.id}`}>{this.props.publication.name}</Link>;
         } 
 }

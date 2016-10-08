@@ -1,5 +1,6 @@
 import React from 'react';  
 import EditionItem from './EditionItem.jsx';
+import slugify from 'slugify';
 
 export default class Publication extends React.Component {  
 	constructor(props){
@@ -33,10 +34,11 @@ export default class Publication extends React.Component {
 		var pageLength = 25;
 		var pageCount = this.state.data.editions.count / pageLength;
 		var pageControl = null;
-		
+		var slug = slugify(this.state.data.publication.name.replace('_', ' ')).toLowerCase();
+
 		if(Math.floor(pageCount) > 0 ){
 			for(var i=0;i<pageCount;i++){
-				pages.push(<li key={i}><a href="#">{i+1}</a></li>);
+				pages.push(<li key={i}><a href={`/publication/${slug}_${this.state.data.publication.id}/page-${i}`}>{i+1}</a></li>);
 			}
 			pageControl = <ul>{pages}</ul>;
 		}
