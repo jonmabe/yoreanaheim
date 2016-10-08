@@ -7,6 +7,6 @@ var router = koaRouter();
 
 // sample - basic routing
 router.get('/api/publications', routes.publication.list);
-router.get('/api/publication/:id', routes.publication.get);
+router.get('/api/publication/:id/page/:page', routes.publication.get);
 
 module.exports = router;

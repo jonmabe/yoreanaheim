@@ -27,7 +27,7 @@ render((
 	<Router history={browserHistory}>
 		<Route path="/" component={App}>
 			<IndexRoute component={Publications} />
-			<Route path="/publication/:id" component={Publication} />
+			<Route path="/publication/(:name_):id(/page-:page)" component={Publication} />
 		</Route>
 	</Router>
 ), document.getElementById('app'));

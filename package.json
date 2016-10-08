@@ -1,7 +1,7 @@
 {
-  "name": "anaheim-gazetteer",
+  "name": "yoreanaheim",
   "version": "1.0.0",
-  "description": "Anaheim Gazetteer",
+  "description": "Yore Anaheim",
   "main": "index.js",
   "scripts": {
     "webserver": "node api/src/index.js",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:jonmabe/anaheim-gazetteer.git"
+    "url": "git@github.com:jonmabe/yoreanaheim.git"
   },
   "author": "Jonathan Mabe",
   "license": "ISC",
