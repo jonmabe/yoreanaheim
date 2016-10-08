@@ -3,6 +3,7 @@
 module.exports = function(sequelize, DataTypes) {
   var edition = sequelize.define('edition', {
     publication_id: DataTypes.INTEGER,
+    edition_date: DataTypes.DATE,
     name: DataTypes.STRING,
     pages: DataTypes.INTEGER,
     pdf: DataTypes.STRING,

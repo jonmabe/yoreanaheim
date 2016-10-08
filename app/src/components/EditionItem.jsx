@@ -6,6 +6,6 @@ export default class EditionItem extends React.Component {
 		super(props);
 	}
     render() {    
-         return <a href={`${this.props.edition.pdf}`} target='_blank'>{this.props.edition.name}</a>;
+         return <a href={`${this.props.edition.pdf}`} target='_blank'>{this.props.edition.name} {this.props.edition.edition_date}</a>;
         } 
 }

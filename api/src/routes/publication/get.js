@@ -7,6 +7,9 @@ module.exports = function *() {
 	var publication = yield models.publication.findById(this.params.id);
 	var editions = yield models.edition.findAndCountAll({
 		where: {'publication_id': this.params.id},
+		order: [
+			['edition_date', 'ASC']	
+		],
 		limit: pageLength,
 		offset: pageLength * this.params.page
 	});

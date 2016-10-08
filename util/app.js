@@ -27,12 +27,13 @@ c.on('ready', function() {
           var path = "http://"+ rootDir +"/"+ yearItem.name +"/"+ editionItem.name;
           var nameMatch = re.exec(editionItem.name);
           if(nameMatch != null){
-            var editionDate = new Date(parseInt(nameMatch[2]), parseInt(nameMatch[3]), parseInt(nameMatch[4]));
+            var editionDate = new Date(parseInt(nameMatch[2]), parseInt(nameMatch[3]) - 1, parseInt(nameMatch[4]));
             var editionName = dateFormat(editionDate, "fullDate");
             //loconsole.log("creating", editionName);
             
             models.edition.create({
               publication_id: 1,
+              edition_date: editionDate,
               name: editionName,
               pages: 0,
               pdf: path,

@@ -11,6 +11,9 @@ module.exports = {
       publication_id: {
         type: Sequelize.INTEGER
       },
+      edition_date: {
+        type: Sequelize.DATE
+      },
       name: {
         type: Sequelize.STRING
       },
