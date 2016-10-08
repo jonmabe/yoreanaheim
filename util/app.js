@@ -3,7 +3,7 @@ var Sequelize = require('sequelize');
 var models  = require('../api/models');
 var dateFormat = require('dateformat');
 
-var rootDir = 'broadwayites.com/anaheim-gazette';
+var rootDir = 'media.yoreanaheim.com/anaheim-gazette';
 var c = new Client();
 
 var sequelize = new Sequelize(process.env.DATABASE_URL, {
