@@ -26,7 +26,10 @@ module.exports = {
     {
       test: /\.scss$/,
       loaders: ['style','css','sass']
-    }]
+    },
+    { test: /\.jpg$/, loaders:[  
+      'file?hash=sha512&digest=hex&name=[hash].[ext]',
+      'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false' ]}]
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
