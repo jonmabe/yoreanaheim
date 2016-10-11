@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router'
 import $ from 'jquery';
+import Layout from './Layout.jsx';
 
 require('./App.scss');
 
 export default class App extends React.Component {  
   render() {
     return (
-    	<div className="main">
-				<Link to={'/'}>Publications</Link>
+    	<Layout>
 				{this.props.children}
-    	</div>
+    	</Layout>
     );
   }
 }

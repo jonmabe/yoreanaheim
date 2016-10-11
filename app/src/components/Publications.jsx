@@ -1,5 +1,4 @@
 import React from 'react';  
-import Layout from './Layout.jsx';
 import PublicationItem from './PublicationItem.jsx';
 
 export default class Publications extends React.Component {  
@@ -21,14 +20,14 @@ export default class Publications extends React.Component {
 	}
     render() {    
          return (
-         	<Layout>
+         	<div>
 	         	<h2>Publications</h2>
 	         	<ul>
 	         		{this.state.publications.map(function(pub){
 	         			return <li key={`publication-${pub.id}`} ><PublicationItem publication={pub} /></li>;
 	         		})}
 	         	</ul>
-         	</Layout>
+         	</div>
          )
     } 
 }
