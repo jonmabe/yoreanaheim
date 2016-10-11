@@ -31,16 +31,19 @@ export default class Publication extends React.Component {
 	}
     render() {
 		var pages = [];
-		var pageLength = 25;
+		var pageLength = 1;
 		var pageCount = this.state.data.editions.count / pageLength;
 		var pageControl = null;
 		var slug = slugify(this.state.data.publication.name.replace('_', ' ')).toLowerCase();
 
 		if(Math.floor(pageCount) > 0 ){
 			for(var i=0;i<pageCount;i++){
-				pages.push(<li key={i}><a href={`/publication/${slug}_${this.state.data.publication.id}/page-${i}`}>{i+1}</a></li>);
+				var itemClassNames = 'page-item';
+				if(i+'' == this.props.params.page)
+					itemClassNames += ' active';
+				pages.push(<li key={i} className={itemClassNames}><a className="page-link" href={`/publication/${slug}_${this.state.data.publication.id}/page-${i}`}>{i+1}</a></li>);
 			}
-			pageControl = <ul>{pages}</ul>;
+			pageControl = <nav aria-label="Page navigation"><ul className="pagination">{pages}</ul></nav>;
 		}
 
          return (
