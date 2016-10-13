@@ -1,13 +1,13 @@
 'use strict';
 
-import path from 'path';
 import koa from 'koa';
 import logger from 'koa-logger';
 import config from 'config';
 import router from './router';
-import serve from 'koa-static';
 import pkg from '../../package.json';
-import fs from 'fs';
+import webpack from 'webpack';
+import webpackDevServer from 'webpack-dev-server';
+import webpackConfig from '../../webpack.config.js';
 
 // init app
 var app = koa();
@@ -24,12 +24,18 @@ app.use(logger());
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-app.use(serve(path.join(__dirname, '../../app/build'), {
-}));
+new webpackDevServer(webpack(webpackConfig), {
+        hot: true,
+        historyApiFallback: true,
+        proxy: {
+                "*": "http://localhost:3000"
+        }
+}).listen(3001, 'localhost', function (err, result) {
+        if (err) {
+                console.log(err);
+        }
 
-app.use(function *(){
-        // not sure if this is the right way to do it, but it redirects all other output to index.html
-        this.body =  fs.readFileSync(path.join(__dirname, '../../app/build/index.html'), 'utf8');
+        console.log('Listening at localhost:3001');
 });
 
 // start server

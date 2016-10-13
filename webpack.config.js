@@ -6,7 +6,10 @@ var ROOT_PATH = path.resolve(__dirname);
 
 module.exports = {  
   devtool: process.env.NODE_ENV === 'production' ? '' : 'source-map' ,
-  entry: [
+  entry: process.env.NODE_ENV === 'production' ? [
+    'bootstrap-loader',
+    path.resolve(ROOT_PATH, 'app/src/index')
+  ] : [
     'bootstrap-loader',
     'webpack-dev-server/client?http://0.0.0.0:3001',
     'webpack/hot/only-dev-server',
