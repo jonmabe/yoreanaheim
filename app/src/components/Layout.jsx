@@ -49,7 +49,7 @@ export default class Layout extends React.Component {
                 <div className="row">&nbsp;</div>
                 <div className="row">
                     <div className="col-lg-12 text-xs-center">
-                        Copyright (c) 2016 Jason Schultz &amp; Jonathan Mabe
+                        Copyright &copy; 2016 Jason Schultz, Jonathan Mabe, Chris Maya 
                     </div>
                 </div>
             </div>
