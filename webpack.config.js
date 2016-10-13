@@ -8,6 +8,8 @@ module.exports = {
   devtool: process.env.NODE_ENV === 'production' ? '' : 'source-map' ,
   entry: [
     'bootstrap-loader',
+    'webpack-dev-server/client?http://0.0.0.0:3001',
+    'webpack/hot/only-dev-server',
     path.resolve(ROOT_PATH, 'app/src/index'),
   ],
   //postcss: [autoprefixer],

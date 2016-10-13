@@ -5,6 +5,7 @@ import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
 import App from './components/App.jsx';
 import Publication from './components/Publication.jsx';
 import Publications from './components/Publications.jsx';
+import About from './components/About.jsx';
 
 const app = document.createElement('div');
 app.setAttribute('id', 'app');
@@ -27,6 +28,7 @@ render((
 	<Router history={browserHistory}>
 		<Route path="/" component={App}>
 			<IndexRoute component={Publications} />
+			<Route path="/about" component={About} />
 			<Route path="/publication/(:name_):id(/page-:page)" component={Publication} />
 		</Route>
 	</Router>

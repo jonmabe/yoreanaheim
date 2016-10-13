@@ -1,4 +1,5 @@
 import React from 'react';
+import { browserHistory, Router, Route, IndexRoute, Link, withRouter } from 'react-router'
 import PublicationItem from './PublicationItem.jsx';
 
 export default class Layout extends React.Component {  
@@ -19,8 +20,8 @@ export default class Layout extends React.Component {
 	}
 
 	componentWillUnmount() {
-		this.serverRequest.abort();
 	}
+
     render() {    
          return (
             <div className="container container-fluid">
@@ -28,15 +29,15 @@ export default class Layout extends React.Component {
                     <div className="col-lg-4">
                         <div className="row">
                             <h1 className="sr-only">Yore Anaheim</h1>
-                            <a href="/"><img className="img-fluid" src={require('../assets/header-685x518.jpg')} /></a>
+                             <Link to={'/'}><img className="img-fluid" src={require('../assets/header-685x518.jpg')} /></Link>
                         </div>
                         <div className="row">
                             <ul className="nav">
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/">Publications</a>
+                                    <Link to={'/'} className="nav-link">Publications</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/about">About</a>
+                                    <Link to={'/about'} className="nav-link">About</Link>
                                 </li>
                             </ul>
                         </div>

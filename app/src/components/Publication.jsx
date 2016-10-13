@@ -31,7 +31,7 @@ export default class Publication extends React.Component {
 	}
     render() {
 		var pages = [];
-		var pageLength = 1;
+		var pageLength = 25;
 		var pageCount = this.state.data.editions.count / pageLength;
 		var pageControl = null;
 		var slug = slugify(this.state.data.publication.name.replace('_', ' ')).toLowerCase();
