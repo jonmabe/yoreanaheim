@@ -8,6 +8,7 @@ import pkg from '../../package.json';
 import webpack from 'webpack';
 import webpackDevServer from 'webpack-dev-server';
 import webpackConfig from '../../webpack.config.js';
+import rewrite from 'koa-rewrite';
 
 // init app
 var app = koa();
@@ -28,7 +29,7 @@ new webpackDevServer(webpack(webpackConfig), {
         hot: true,
         historyApiFallback: true,
         proxy: {
-                "*": "http://localhost:3000"
+                "/api/*": "http://localhost:3000"
         }
 }).listen(3001, 'localhost', function (err, result) {
         if (err) {

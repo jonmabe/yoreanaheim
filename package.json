@@ -11,7 +11,7 @@
     "test:watch": "npm run test -- --watch",
     "build": "node_modules/.bin/webpack",
     "postinstall": "node_modules/.bin/webpack",
-    "dev": "node_modules/.bin/webpack-dev-server",
+    "dev": "node api/src/index-dev.js",
     "lint": "node ./node_modules/eslint/bin/eslint . --ext .js --ext .jsx",
     "deploy": "set NODE_ENV=production&& webpack -p",
     "clean": "rm -rf app/dist app/build"
