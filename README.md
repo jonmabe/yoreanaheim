@@ -40,3 +40,7 @@ To setup postgres for the first time, run:
 sequelize db:migrate
 sequelize db:seed:all
 ```
+
+
+heroku run --app yoreanaheim node util/app.js
+heroku run --app yoreanaheim npm run build
