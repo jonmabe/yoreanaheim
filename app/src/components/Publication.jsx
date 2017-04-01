@@ -1,8 +1,8 @@
-import React from 'react';  
+import React from 'react';
 import EditionItem from './EditionItem.jsx';
 import slugify from 'slugify';
 
-export default class Publication extends React.Component {  
+export default class Publication extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
@@ -35,15 +35,23 @@ export default class Publication extends React.Component {
 		var pageCount = this.state.data.editions.count / pageLength;
 		var pageControl = null;
 		var slug = slugify(this.state.data.publication.name.replace('_', ' ')).toLowerCase();
+		var maxPaging = 6;
+		var pageLinks = 0;
+		var currentPage = typeof this.props.params.page != 'undefined' ? parseInt(this.props.params.page) : 0;
+		var firstPage = currentPage === 0 ? 0 : currentPage - 1;
 
 		if(Math.floor(pageCount) > 0 ){
-			for(var i=0;i<pageCount;i++){
+			pages.push(<li className={'page-item '+ (currentPage === 0 ? 'disabled' : '')}><a href={`/publication/${slug}_${this.state.data.publication.id}/page-${currentPage-1}`} className="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>)
+			for(var i=firstPage;i<pageCount;i++){
+				if(pageLinks == maxPaging) break;
 				var itemClassNames = 'page-item';
-				if(i+'' == this.props.params.page)
+				if(i == currentPage)
 					itemClassNames += ' active';
 				pages.push(<li key={i} className={itemClassNames}><a className="page-link" href={`/publication/${slug}_${this.state.data.publication.id}/page-${i}`}>{i+1}</a></li>);
+				pageLinks++;
 			}
-			pageControl = <nav aria-label="Page navigation"><ul className="pagination">{pages}</ul></nav>;
+			pages.push(<li className={'page-item '+ (''+(pageCount-1) == currentPage ? 'disabled' : '')}><a href={`/publication/${slug}_${this.state.data.publication.id}/page-${currentPage+1}`} className="page-link" aria-label="Previous"><span aria-hidden="true">&raquo;</span></a></li>)
+			pageControl = <nav aria-label="Page navigation"><ul className="pagination pagination-sm">{pages}</ul></nav>;
 		}
 
          return (
@@ -57,5 +65,5 @@ export default class Publication extends React.Component {
          		</ul>
          	</div>
 		 );
-    } 
+    }
 }
