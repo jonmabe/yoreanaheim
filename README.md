@@ -33,6 +33,9 @@ Vanilla
 ```
 npm start
 ```
+```
+node_modules/.bin/webpack; npm start
+```
 
 ### Sequelize
 To setup postgres for the first time, run:
@@ -42,5 +45,11 @@ sequelize db:seed:all
 ```
 
 
+
 heroku run --app yoreanaheim node util/app.js
 heroku run --app yoreanaheim npm run build
+
+
+$env:FTP_HOST="media.yoreanaheim.com"
+$env:FTP_USERNAME=""
+$env:FTP_PASSWORD=""

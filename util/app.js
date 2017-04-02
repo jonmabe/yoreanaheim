@@ -3,23 +3,41 @@ var Sequelize = require('sequelize');
 var models  = require('../api/models');
 var dateFormat = require('dateformat');
 
-var rootDir = 'media.yoreanaheim.com/anaheim-gazette';
 var c = new Client();
 
 var sequelize = new Sequelize(process.env.DATABASE_URL, {
   logging: false
 });
 
+console.log(process.argv);
+
+var configSlug = process.argv[2];
+
+var publication_configs = {
+	'anaheim-gazette': {
+		ftp_slug: 'anaheim-gazette',
+		publication_id: 1,
+	},
+	'anaheim-bulletin': {
+		ftp_slug: 'anaheim-bulletin',
+		publication_id: 2,
+	}
+}
+
+var publication_config = publication_configs[configSlug];
+console.log(publication_config);
+
 c.on('ready', function() {
+	var rootDir = 'media.yoreanaheim.com/'+ publication_config.ftp_slug;
   c.list(rootDir, function(err, list) {
     if (err) throw err;
-    
+
     list.forEach(function(yearItem){
       if(yearItem.type != 'd') return;
       var path = rootDir +"/"+ yearItem.name;
 
       //console.log("working on", yearItem.name, yearItem);
-      
+
       c.list(path, function(err, list) {
         list.forEach(function(editionItem){
           if(editionItem.type != '-') return;
@@ -30,9 +48,9 @@ c.on('ready', function() {
             var editionDate = new Date(parseInt(nameMatch[2]), parseInt(nameMatch[3]) - 1, parseInt(nameMatch[4]));
             var editionName = dateFormat(editionDate, "fullDate");
             //loconsole.log("creating", editionName);
-            
+
             models.edition.create({
-              publication_id: 1,
+              publication_id: publication_config.publication_id,
               edition_date: editionDate,
               name: editionName,
               pages: 0,
@@ -41,7 +59,7 @@ c.on('ready', function() {
               notes: null,
               text_content: null
             });
-             
+
           } else {
             console.log("Couldn't Parse", editionItem);
           }
@@ -54,7 +72,7 @@ c.on('ready', function() {
 });
 //console.log(process.env.FTP_HOST + ":" + process.env.FTP_USERNAME + ":" + process.env.FTP_PASSWORD);
 
-models.edition.truncate().then(function()
+models.edition.destroy({ where: { publication_id: publication_config.publication_id }}).then(function()
 {
   c.connect({
     host: process.env.FTP_HOST,

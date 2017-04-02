@@ -5,6 +5,9 @@ module.exports = {
       return queryInterface.bulkInsert('publications', [{
         id: 1,
         name: 'Anaheim Gazette'
+      },{
+        id: 2,
+        name: 'Anaheim Bulletin'
       }], {});
   },
 
