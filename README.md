@@ -49,6 +49,10 @@ sequelize db:seed:all
 heroku run --app yoreanaheim node util/app.js
 heroku run --app yoreanaheim npm run build
 
+heroku run --app yoreanaheim npm run build
+heroku run --app yoreanaheim bash
+
+node util/app.js anaheim-gazette && node util/app.js anaheim-bulletin && node util/app.js oc-plain-dealer && node util/app.js anaheim-daily-herald
 
 $env:FTP_HOST="media.yoreanaheim.com"
 $env:FTP_USERNAME=""
