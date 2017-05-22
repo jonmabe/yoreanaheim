@@ -8,6 +8,12 @@ module.exports = {
       },{
         id: 2,
         name: 'Anaheim Bulletin'
+      },{
+        id: 3,
+        name: 'OC Plain Dealer'
+      },{
+        id: 4,
+        name: 'Anaheim Daily Herald'
       }], {});
   },
 

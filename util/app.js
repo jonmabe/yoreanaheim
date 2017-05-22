@@ -25,6 +25,14 @@ var publication_configs = {
 	'anaheim-bulletin': {
 		ftp_slug: 'anaheim-bulletin',
 		publication_id: 2,
+	},
+	'oc-plain-dealer': {
+		ftp_slug: 'oc-plain-dealer',
+		publication_id: 3,
+	},
+	'anaheim-daily-herald': {
+		ftp_slug: 'anaheim-daily-herald',
+		publication_id: 4,
 	}
 }
 
@@ -51,7 +59,8 @@ c.on('ready', function() {
           if(nameMatch != null){
             var editionDate = new Date(parseInt(nameMatch[2]), parseInt(nameMatch[3]) - 1, parseInt(nameMatch[4]));
             var editionName = dateFormat(editionDate, "fullDate");
-
+						var pages = 1;
+						/*
 						var pdfParser = new pdf2json();
 
 						pdfParser.on('pdfParser_dataReady',  pdfData => {
@@ -63,23 +72,23 @@ c.on('ready', function() {
 						request.get(path, function (err, response, buffer) {
 							pdfParser.parseBuffer(buffer);
 						});
-
+						*/
             //loconsole.log("creating", editionName);
 
-            /*
+
 						models.edition.create({
               publication_id: publication_config.publication_id,
               edition_date: editionDate,
               name: editionName,
-              pages: 0,
+              pages: pages,
               pdf: path,
               edition_number: null,
               notes: null,
               text_content: null
             });
-						*/
+
           } else {
-            //console.log("Couldn't Parse", editionItem);
+            console.log("Couldn't Parse", editionItem);
           }
         });
       });
@@ -90,14 +99,12 @@ c.on('ready', function() {
 });
 
 
+//console.log(process.env.FTP_HOST + ":" + process.env.FTP_USERNAME + ":" + process.env.FTP_PASSWORD);
+models.edition.destroy({ where: { publication_id: publication_config.publication_id }}).then(function()
+{
   c.connect({
     host: process.env.FTP_HOST,
     user: process.env.FTP_USERNAME,
     password: process.env.FTP_PASSWORD
   });
-/*
-//console.log(process.env.FTP_HOST + ":" + process.env.FTP_USERNAME + ":" + process.env.FTP_PASSWORD);
-models.edition.destroy({ where: { publication_id: publication_config.publication_id }}).then(function()
-{
 });
-*/
