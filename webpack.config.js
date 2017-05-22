@@ -1,10 +1,10 @@
 var webpack = require('webpack');
-var path = require('path');  
+var path = require('path');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
 
 var ROOT_PATH = path.resolve(__dirname);
 
-module.exports = {  
+module.exports = {
   devtool: process.env.NODE_ENV === 'production' ? '' : 'source-map' ,
   entry: process.env.NODE_ENV === 'production' ? [
     'bootstrap-loader',
@@ -34,7 +34,7 @@ module.exports = {
     { test: /\.css$/, loader: 'style-loader!css-loader' },
     { test: /bootstrap[\/\\]js[\/\\]dist[\/\\]/, loader: 'imports?jQuery=jquery' },
     { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
-    { test: /\.jpg$/, loaders:[  
+    { test: /\.jpg$/, loaders:[
       'file?hash=sha512&digest=hex&name=[hash].[ext]',
       'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false' ]}]
   },
@@ -56,7 +56,8 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlwebpackPlugin({
-      title: 'Yore Anaheim'
+      title: 'Yore Anaheim',
+			favicon: 'app/src/assets/favicons/favicon.ico'
     }),
     new webpack.ProvidePlugin({
       $: "jquery",
