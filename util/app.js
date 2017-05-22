@@ -1,7 +1,11 @@
+require('babel-register');
+
 var Client = require('ftp');
 var Sequelize = require('sequelize');
 var models  = require('../api/models');
 var dateFormat = require('dateformat');
+var pdf2json = require('pdf2json');
+var request = require('request').defaults({ encoding: null });
 
 var c = new Client();
 
@@ -47,9 +51,23 @@ c.on('ready', function() {
           if(nameMatch != null){
             var editionDate = new Date(parseInt(nameMatch[2]), parseInt(nameMatch[3]) - 1, parseInt(nameMatch[4]));
             var editionName = dateFormat(editionDate, "fullDate");
+
+						var pdfParser = new pdf2json();
+
+						pdfParser.on('pdfParser_dataReady',  pdfData => {
+					    //console.log('Number of pages:', pdfData.formImage.Pages.length);
+							var pages = pdfData.formImage.Pages.length;
+							console.log('pages', pages, path);
+						});
+						//pdfParser.on("pdfParser_dataError", errData => console.error(errData.parserError) );
+						request.get(path, function (err, response, buffer) {
+							pdfParser.parseBuffer(buffer);
+						});
+
             //loconsole.log("creating", editionName);
 
-            models.edition.create({
+            /*
+						models.edition.create({
               publication_id: publication_config.publication_id,
               edition_date: editionDate,
               name: editionName,
@@ -59,9 +77,9 @@ c.on('ready', function() {
               notes: null,
               text_content: null
             });
-
+						*/
           } else {
-            console.log("Couldn't Parse", editionItem);
+            //console.log("Couldn't Parse", editionItem);
           }
         });
       });
@@ -70,13 +88,16 @@ c.on('ready', function() {
     c.end();
   });
 });
-//console.log(process.env.FTP_HOST + ":" + process.env.FTP_USERNAME + ":" + process.env.FTP_PASSWORD);
 
-models.edition.destroy({ where: { publication_id: publication_config.publication_id }}).then(function()
-{
+
   c.connect({
     host: process.env.FTP_HOST,
     user: process.env.FTP_USERNAME,
     password: process.env.FTP_PASSWORD
   });
+/*
+//console.log(process.env.FTP_HOST + ":" + process.env.FTP_USERNAME + ":" + process.env.FTP_PASSWORD);
+models.edition.destroy({ where: { publication_id: publication_config.publication_id }}).then(function()
+{
 });
+*/

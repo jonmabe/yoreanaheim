@@ -51,6 +51,8 @@
     "koa-static": "^2.0.0",
     "node-sass": "^3.10.1",
     "path": "^0.12.7",
+    "pdf2json": "^1.1.7",
+    "pdfjs-dist": "^1.8.371",
     "pg": "^4.5.6",
     "postcss-loader": "^0.13.0",
     "react": "^15.3.2",
@@ -92,6 +94,7 @@
     "istanbul": "^0.4.3",
     "jsdom": "^9.1.0",
     "mocha": "^2.4.5",
+    "pdfjs-dist": "^1.8.371",
     "redux-devtools": "^3.3.1",
     "sequelize-cli": "^2.4.0",
     "webpack-dev-server": "^1.14.1"
