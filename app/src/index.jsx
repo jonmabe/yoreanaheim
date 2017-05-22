@@ -1,10 +1,11 @@
-import React from 'react';  
+import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
 
 import App from './components/App.jsx';
 import Publication from './components/Publication.jsx';
 import Publications from './components/Publications.jsx';
+import PublicationYears from './components/PublicationYears.jsx';
 import About from './components/About.jsx';
 
 const app = document.createElement('div');
@@ -29,7 +30,10 @@ render((
 		<Route path="/" component={App}>
 			<IndexRoute component={Publications} />
 			<Route path="/about" component={About} />
-			<Route path="/publication/(:name_):id(/page-:page)" component={Publication} />
+			<Route path="/publication/(:name_):id(/year-:year-month-:month)" component={Publication} />
+			<Route path="/publication/(:name_):id(/year-:year)" component={Publication} />
+			<Route path="/publication/(:name_):id/page-:page" component={Publication} />
+			<Route path="/publication/(:name_):id/years" component={PublicationYears} />
 		</Route>
 	</Router>
 ), document.getElementById('app'));
