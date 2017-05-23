@@ -20,6 +20,7 @@ export default class Publications extends React.Component {
 		this.serverRequest.abort();
 	}
     render() {
+				 document.title = 'Home | Yore Anaheim';
          return (
          	<div>
 	         	<h2 className="display-3">Publications</h2>

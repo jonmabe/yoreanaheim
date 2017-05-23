@@ -70,6 +70,8 @@ export default class Publication extends React.Component {
 		var navItems = [];
 		var title = this.state.data.publication.name;
 
+		document.title = title + '| Yore Anaheim';
+
 		/*
 		var pageLength = 25;
 		var pageCount = this.state.data.editions.count / pageLength;
