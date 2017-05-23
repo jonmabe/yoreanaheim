@@ -70,7 +70,7 @@ export default class Publication extends React.Component {
 		var navItems = [];
 		var title = this.state.data.publication.name;
 
-		document.title = title + '| Yore Anaheim';
+		document.title = title + ' | Yore Anaheim';
 
 		/*
 		var pageLength = 25;

@@ -31,7 +31,7 @@ export default class PublicationYears extends React.Component {
 		var slug = slugify(this.state.data.publication.name.replace('_', ' ') + '_' + this.state.data.publication.id).toLowerCase();
 		var title = this.state.data.publication.name;
 
-		document.title = title + '| Yore Anaheim';
+		document.title = title + ' | Yore Anaheim';
 
 		breadcrumbs.push(<li key='bc-0' className='breadcrumb-item'><Link to="/">Publications</Link></li>)
 		breadcrumbs.push(<li key='bc-1' className='breadcrumb-item active'>{this.state.data.publication.name}</li>)
