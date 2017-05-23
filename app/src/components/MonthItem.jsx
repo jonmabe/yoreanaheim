@@ -10,7 +10,7 @@ export default class MonthItem extends React.Component {
 
      	return <Link to={link} className="list-group-item list-group-item-action justify-content-between">
 		 		{this.props.month.month}
-		 		<span className="badge badge-default badge-pill">{this.props.month.count}</span>
+		 		<span className="badge badge-default badge-pill">{this.props.month.count.toLocaleString()}</span>
 		 	</Link>
     }
 }

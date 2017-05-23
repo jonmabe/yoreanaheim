@@ -11,7 +11,7 @@ export default class PublicationItem extends React.Component {
 		 var link = `/publication/${slug}_${this.props.publication.id}/years`;
      return <Link to={link} className="list-group-item list-group-item-action justify-content-between" >
 			 	{this.props.publication.name}
-			 	<span className="badge badge-default badge-pill">{this.props.publication.count}</span>
+			 	<span className="badge badge-default badge-pill">{this.props.publication.count.toLocaleString()}</span>
 		 </Link>;
   }
 }
