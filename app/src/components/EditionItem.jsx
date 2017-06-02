@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router'
+import dateFormat from 'dateformat';
 
 export default class EditionItem extends React.Component {
 	constructor(props){
