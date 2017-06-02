@@ -8,10 +8,18 @@ import Publications from './components/Publications.jsx';
 import PublicationYears from './components/PublicationYears.jsx';
 import About from './components/About.jsx';
 
+import ReactGA from 'react-ga';
+
 const app = document.createElement('div');
 app.setAttribute('id', 'app');
 document.body.appendChild(app);
 
+ReactGA.initialize('UA-100353165-1');
+
+function logPageView() {
+  ReactGA.set({ page: window.location.pathname + window.location.search });
+  ReactGA.pageview(window.location.pathname + window.location.search);
+}
 
 const Index = React.createClass({
   render() {
@@ -26,7 +34,7 @@ const NotFound = React.createClass({
 })
 
 render((
-	<Router history={browserHistory}>
+	<Router history={browserHistory} onUpdate={logPageView}>
 		<Route path="/" component={App}>
 			<IndexRoute component={Publications} />
 			<Route path="/about" component={About} />
