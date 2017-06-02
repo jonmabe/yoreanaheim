@@ -11,7 +11,8 @@ module.exports = function *() {
 	    [ models.sequelize.fn('count', models.sequelize.col('editions.id') ), 'count' ]
 		],
 		include: [{ attributes: [], model: models.edition }],
-		group: ['publication.id', 'publication.name']
+		group: ['publication.id', 'publication.name'],
+		order: ['publication.name']
 	});
 
 	this.body = publications;
