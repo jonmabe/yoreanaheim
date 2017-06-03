@@ -46,7 +46,8 @@ export default class PublicationYears extends React.Component {
 	   		<ul className="list-group">
 	     		{this.state.data.years.map(function(yearItem){
 						var yearMatch = yearRegex.exec(yearItem.dateTrunc);
-						yearItem.year = yearMatch[0]; //dateFormat(yearItem.dateTrunc.replace('Z', ''), 'yyyy');
+						if(yearMatch) yearItem.year = yearMatch[0]; 
+						else yearItem.year = dateFormat(yearItem.dateTrunc.replace('Z', ''), 'yyyy');
 						var key = `year-${yearItem.year}`;
 	     			return <YearItem slug={slug} yearItem={yearItem} key={key} />;
 	     		})}
