@@ -30,6 +30,7 @@ export default class PublicationYears extends React.Component {
 		var breadcrumbs = [];
 		var slug = slugify(this.state.data.publication.name.replace('_', ' ') + '_' + this.state.data.publication.id).toLowerCase();
 		var title = this.state.data.publication.name;
+		var yearRegex = /\d{4}/g;
 
 		document.title = title + ' | Yore Anaheim';
 
@@ -44,7 +45,8 @@ export default class PublicationYears extends React.Component {
 				</ol>
 	   		<ul className="list-group">
 	     		{this.state.data.years.map(function(yearItem){
-						yearItem.year = dateFormat(yearItem.dateTrunc.replace('Z', ''), 'yyyy');
+						var yearMatch = yearRegex.exec(yearItem.dateTrunc);
+						yearItem.year = yearMatch[0]; //dateFormat(yearItem.dateTrunc.replace('Z', ''), 'yyyy');
 						var key = `year-${yearItem.year}`;
 	     			return <YearItem slug={slug} yearItem={yearItem} key={key} />;
 	     		})}
