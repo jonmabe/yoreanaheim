@@ -4,7 +4,7 @@ import MonthItem from './MonthItem.jsx';
 import PublicationItem from './PublicationItem.jsx';
 import YearItem from './YearItem.jsx';
 import slugify from 'slugify';
-import dateFormat from 'dateformat';
+import moment from 'moment-timezone';
 import { browserHistory, Router, Route, IndexRoute, Link, withRouter } from 'react-router'
 
 export default class Publication extends React.Component {
@@ -100,8 +100,9 @@ export default class Publication extends React.Component {
 
 		if (typeof this.props.params.month == 'undefined' && this.state.data.months && (this.state.data.editions.count > 55)) {
 			navigation = this.state.data.months.map(function(monthItem){
-				monthItem.year = dateFormat(monthItem.dateTrunc.replace('Z', ''), 'yyyy');
-				monthItem.month = dateFormat(monthItem.dateTrunc.replace('Z', ''), 'mmmm');
+				var d = moment(monthItem.dateTrunc);
+				monthItem.year = d.tz('UTC').format('YYYY');
+				monthItem.month = d.tz('UTC').format('MMMM');
 				var key = `month-${monthItem.month}`;
 				return <MonthItem month={monthItem} slug={slug} key={key} />;
 			});

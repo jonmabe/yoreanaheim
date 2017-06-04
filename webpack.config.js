@@ -29,6 +29,7 @@ module.exports = {
       exclude: /node_modules/,
       loaders: ['react-hot', 'babel?presets[]=react']
     },
+    { include: /\.json$/, loaders: ["json-loader"]},
     { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
     { test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url?limit=10000' },
     { test: /\.css$/, loader: 'style-loader!css-loader' },
@@ -39,7 +40,7 @@ module.exports = {
       'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false' ]}]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.json', '.js', '.jsx']
   },
   output: {
     path: path.resolve(ROOT_PATH, 'app/build'), //process.env.NODE_ENV === 'production' ? path.resolve(ROOT_PATH, 'app/dist') : path.resolve(ROOT_PATH, 'app/build'),

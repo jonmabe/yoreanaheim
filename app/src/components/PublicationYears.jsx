@@ -1,8 +1,8 @@
 import React from 'react';
 import YearItem from './YearItem.jsx';
 import slugify from 'slugify';
-import dateFormat from 'dateformat';
 import { browserHistory, Router, Route, IndexRoute, Link, withRouter } from 'react-router'
+import moment from 'moment-timezone';
 
 export default class PublicationYears extends React.Component {
 	constructor(props){
@@ -45,9 +45,9 @@ export default class PublicationYears extends React.Component {
 				</ol>
 	   		<ul className="list-group">
 	     		{this.state.data.years.map(function(yearItem){
-						var yearMatch = yearRegex.exec(yearItem.dateTrunc);
-						if(yearMatch) yearItem.year = yearMatch[0]; 
-						else yearItem.year = dateFormat(yearItem.dateTrunc.replace('Z', ''), 'yyyy');
+						var d = moment(yearItem.dateTrunc);
+						yearItem.year = d.tz('UTC').format('YYYY');
+						
 						var key = `year-${yearItem.year}`;
 	     			return <YearItem slug={slug} yearItem={yearItem} key={key} />;
 	     		})}
