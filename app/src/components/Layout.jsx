@@ -32,7 +32,7 @@ export default class Layout extends React.Component {
     return (
         <div className="container container-fluid" style={{marginTop:'10px'}}>
             <div className="row">
-                <div className="col-4">
+                <div className="col-md-4">
                     <div className="row" style={{marginBottom:'10px'}}>
 		                    <div className="col">
                           <h1 className="sr-only">Yore Anaheim</h1>
@@ -61,7 +61,7 @@ export default class Layout extends React.Component {
 												</div>
                     </div>
                 </div>
-                <div className="col-8">
+                <div className="col-md-8">
                     {this.props.children}
                 </div>
             </div>
