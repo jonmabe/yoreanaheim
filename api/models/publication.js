@@ -2,7 +2,9 @@
 
 module.exports = function(sequelize, DataTypes) {
   var publication = sequelize.define('publication', {
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
+    about_excerpt: DataTypes.STRING,
+    about: DataTypes.STRING
   }, {
     tableName: 'publications',
     classMethods: {

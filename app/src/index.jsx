@@ -6,6 +6,7 @@ import App from './components/App.jsx';
 import Publication from './components/Publication.jsx';
 import Publications from './components/Publications.jsx';
 import PublicationYears from './components/PublicationYears.jsx';
+import PublicationAbout from './components/PublicationAbout.jsx';
 import About from './components/About.jsx';
 
 import ReactGA from 'react-ga';
@@ -42,6 +43,7 @@ render((
 			<Route path="/publication/(:name_):id(/year-:year)" component={Publication} />
 			<Route path="/publication/(:name_):id/page-:page" component={Publication} />
 			<Route path="/publication/(:name_):id/years" component={PublicationYears} />
+			<Route path="/publication/(:name_):id/about" component={PublicationAbout} />
 		</Route>
 	</Router>
 ), document.getElementById('app'));
