@@ -42,14 +42,14 @@ export default class Layout extends React.Component {
                     <div className="row">
 		                    <div className="col">
                           <div className="list-group">
-                              <Link to={'/'} className="list-group-item list-group-item-action">
+                              <Link to={'/'} className="list-group-item list-group-item-action flex-column align-items-start">
 																<div className="d-flex w-100 justify-content-between">
 																	<h5 className="mb-1">Publications</h5>
 																	<small className="text-muted"></small>
 																</div>
 																<p className="mb-1">Hosting {this.state.data.sumPages.toLocaleString()} pages of historical Anaheim newspapers</p>
 															</Link>
-                              <Link to={'/about'} className="list-group-item list-group-item-action">
+                              <Link to={'/about'} className="list-group-item list-group-item-action flex-column align-items-start">
 																<div className="d-flex w-100 justify-content-between">
 																	<h5 className="mb-1">About</h5>
 																	<small className="text-muted"></small>
