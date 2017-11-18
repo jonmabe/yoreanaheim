@@ -11,6 +11,9 @@ import About from './components/About.jsx';
 
 import ReactGA from 'react-ga';
 
+//import Popper from 'popper.js'
+//import 'bootstrap';
+
 const app = document.createElement('div');
 app.setAttribute('id', 'app');
 document.body.appendChild(app);
