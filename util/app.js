@@ -54,7 +54,7 @@ c.on('ready', function() {
         list.forEach(function(editionItem){
           if(editionItem.type != '-') return;
           var re = /(\w{2})-(\d{4})-0*(\d{1,2})-0*(\d{1,2})\.pdf/i;
-          var path = "http://"+ rootDir +"/"+ yearItem.name +"/"+ editionItem.name;
+          var path = "//"+ rootDir +"/"+ yearItem.name +"/"+ editionItem.name;
           var nameMatch = re.exec(editionItem.name);
           if(nameMatch != null){
             var editionDate = new Date(parseInt(nameMatch[2]), parseInt(nameMatch[3]) - 1, parseInt(nameMatch[4]));
