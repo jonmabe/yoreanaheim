@@ -73,7 +73,7 @@
     "run-sequence": "^1.1.5",
     "sass-loader": "^3.2.3",
     "sawyer": "^3.0.0",
-    "sequelize": "^3.23.2",
+    "sequelize": "^5.21.3",
     "sequelize-cli": "^2.4.0",
     "slugify": "^1.0.2",
     "style-loader": "^0.13.1",
