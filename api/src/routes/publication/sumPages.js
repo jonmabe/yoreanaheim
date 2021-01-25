@@ -6,7 +6,7 @@ var sequelize = require('sequelize');
 module.exports = function *() {
 	var result = {};
 
-	result = yield models.edition.find({
+	result = yield models.edition.findOne({
   	attributes: [
 	    [ models.sequelize.fn('sum', models.sequelize.col('pages') ), 'sumPages' ]
 	  ]

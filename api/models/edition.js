@@ -11,11 +11,11 @@ module.exports = function(sequelize, DataTypes) {
     notes: DataTypes.TEXT,
     text_content: DataTypes.TEXT
   }, {
-    classMethods: {
-      associate: function(models) {
-        edition.belongsTo(models.publication, { foreignKey: 'publication_id'});
-      }
-    }
   });
+
+  edition.associate = (models) => {
+    edition.hasMany(models.publication, { foreignKey: 'publication_id', });
+  };
+
   return edition;
 };

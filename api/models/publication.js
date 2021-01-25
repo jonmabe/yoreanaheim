@@ -6,12 +6,12 @@ module.exports = function(sequelize, DataTypes) {
     about_excerpt: DataTypes.STRING,
     about: DataTypes.STRING
   }, {
-    tableName: 'publications',
-    classMethods: {
-      associate: function(models) {
-        publication.hasMany(models.edition, { foreignKey: 'publication_id'});
-      }
-    }
+    tableName: 'publications'
   });
+
+  publication.associate = (models) => {
+    publication.hasMany(models.edition, { foreignKey: 'publication_id', });
+  };
+
   return publication;
 };
