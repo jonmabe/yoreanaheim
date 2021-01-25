@@ -10,7 +10,8 @@ var request = require('request').defaults({ encoding: null });
 var c = new Client();
 
 var sequelize = new Sequelize(process.env.DATABASE_URL, {
-  logging: false
+  logging: false,
+  ssl: true
 });
 
 console.log(process.argv);
