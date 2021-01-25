@@ -14,7 +14,7 @@ module.exports = function *() {
 	    [ models.sequelize.fn('count', models.sequelize.col('id') ), 'count' ]
 	  ],
 	  group: '"dateTrunc"',
-	  order: '"dateTrunc"'
+	  order: sequelize.literal('"dateTrunc"')
 	});
 
 	this.body = {

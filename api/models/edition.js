@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   edition.associate = (models) => {
-    edition.hasMany(models.publication, { foreignKey: 'publication_id', });
+    edition.hasMany(models.publication, { foreignKey: 'id', });
   };
 
   return edition;

@@ -1,6 +1,8 @@
 'use strict';
 
 var models  = require('../../../models');
+var sequelize = require('sequelize');
+const { Op } = require('sequelize');
 
 var monthNames = {
 	'january': 0,
@@ -28,31 +30,31 @@ module.exports = function *() {
 	if (typeof this.params.page != "undefined") {
 		offset = pageLength * this.params.page;
 		limit = pageLength;
-		where = { 'publication_id': this.params.id };
+		where = { 'id': this.params.id };
 	} else if(typeof this.params.month != "undefined"){
 		var from = new Date(Date.UTC(this.params.year, monthNames[this.params.month], 1, 0, 0, 0));
 		var to = new Date(new Date(from).setMonth(from.getMonth()+1)-1);
 
 		where = {
-			'publication_id': this.params.id,
-	 	 	'edition_date': { $between: [ from, to ] }
+			'id': this.params.id,
+	 	 	'edition_date': { [Op.between]: [ from, to ] }
 		};
 	} else if (typeof this.params.year != "undefined"){
 		var from = new Date(Date.UTC(this.params.year, 0, 1, 0, 0, 0));
 		var to = new Date(Date.UTC(this.params.year, 11, 31, 11, 59, 59));
 		where = {
-			'publication_id': this.params.id,
-	 	 	'edition_date': { $between: [ from, to ] }
+			'id': this.params.id,
+	 	 	'edition_date': { [Op.between]: [ from, to ] }
 		};
 
 		months = yield models.edition.findAll({
-			where: where,
-	  	attributes: [
+		  where: where,
+	  	  attributes: [
 		    [ models.sequelize.fn('date_trunc', 'month',  models.sequelize.col('edition_date')), 'dateTrunc' ],
 		    [ models.sequelize.fn('count', models.sequelize.col('id') ), 'count' ]
 		  ],
 		  group: '"dateTrunc"',
-		  order: '"dateTrunc"'
+		  order: sequelize.literal('"dateTrunc"')
 		});
 	}
 
