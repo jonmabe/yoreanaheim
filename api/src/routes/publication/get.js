@@ -30,20 +30,20 @@ module.exports = function *() {
 	if (typeof this.params.page != "undefined") {
 		offset = pageLength * this.params.page;
 		limit = pageLength;
-		where = { 'id': this.params.id };
+		where = { 'publication_id': this.params.id };
 	} else if(typeof this.params.month != "undefined"){
 		var from = new Date(Date.UTC(this.params.year, monthNames[this.params.month], 1, 0, 0, 0));
 		var to = new Date(new Date(from).setMonth(from.getMonth()+1)-1);
 
 		where = {
-			'id': this.params.id,
+			'publication_id': this.params.id,
 	 	 	'edition_date': { [Op.between]: [ from, to ] }
 		};
 	} else if (typeof this.params.year != "undefined"){
 		var from = new Date(Date.UTC(this.params.year, 0, 1, 0, 0, 0));
 		var to = new Date(Date.UTC(this.params.year, 11, 31, 11, 59, 59));
 		where = {
-			'id': this.params.id,
+			'publication_id': this.params.id,
 	 	 	'edition_date': { [Op.between]: [ from, to ] }
 		};
 
