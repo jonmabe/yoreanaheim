@@ -11,7 +11,11 @@ var c = new Client();
 
 var sequelize = new Sequelize(process.env.DATABASE_URL, {
   logging: false,
-  ssl: true
+  dialectOptions: {
+      ssl: {
+        rejectUnauthorized: false
+    }
+  }
 });
 
 console.log(process.argv);
