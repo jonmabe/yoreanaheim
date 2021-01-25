@@ -5,7 +5,7 @@ var sequelize = require('sequelize');
 
 module.exports = function *() {
 	var years = {};
-	var publication = yield models.publication.findById(this.params.id);
+	var publication = yield models.publication.findByPk(this.params.id);
 
 	years = yield models.edition.findAll({
 		where: {'publication_id': publication.id},

@@ -19,7 +19,7 @@ var monthNames = {
 
 module.exports = function *() {
 	var pageLength = 25;
-	var publication = yield models.publication.findById(this.params.id);
+	var publication = yield models.publication.findByPk(this.params.id);
 	var offset = null;
 	var limit = null;
 	var where = {};

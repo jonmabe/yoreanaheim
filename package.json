@@ -59,7 +59,7 @@
     "path": "^0.12.7",
     "pdf2json": "^1.1.7",
     "pdfjs-dist": "^1.8.371",
-    "pg": "^4.5.6",
+    "pg": "^6.4.2",
     "popper.js": "^1.12.9",
     "postcss-loader": "^0.13.0",
     "prop-types": "^15.6.0",

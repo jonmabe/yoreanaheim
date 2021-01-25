@@ -8,11 +8,11 @@ module.exports = function *() {
 		attributes: [
 			'id',
 			'name',
-	    [ models.sequelize.fn('count', models.sequelize.col('editions.id') ), 'count' ]
+	    	[ models.sequelize.fn('count', models.sequelize.col('editions.id') ), 'count' ]
 		],
 		include: [{ attributes: [], model: models.edition }],
 		group: ['publication.id', 'publication.name'],
-		order: ['publication.name']
+		order: ['name']
 	});
 
 	this.body = publications;
