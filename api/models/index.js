@@ -12,6 +12,7 @@ var db        = {};
 //console.log(process.env[config.use_env_variable]);
 
 if (config.use_env_variable) {
+  console.log('using db env var');
   var sequelize = new Sequelize(process.env[config.use_env_variable], {
     ssl: {
         rejectUnauthorized: false
