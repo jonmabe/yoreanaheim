@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Yore Anaheim",
   "main": "index.js",
+  "engines": {
+    "node": ">=10.0.0"
+  },
   "scripts": {
     "webserver": "node api/src/index.js",
     "web": "node api/src/index.js",
