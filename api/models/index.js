@@ -9,7 +9,7 @@ var config    = require(path.join(__dirname, '..', '..', 'config', 'config.json'
 var db        = {};
 
 const pg = require('pg');
-pg.defaults.ssl = true;
+//pg.defaults.ssl = true;
 
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable], config.dialectOptions);
