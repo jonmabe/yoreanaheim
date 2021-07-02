@@ -57,3 +57,17 @@ node util/app.js anaheim-gazette && node util/app.js anaheim-bulletin && node ut
 $env:FTP_HOST="media.yoreanaheim.com"
 $env:FTP_USERNAME=""
 $env:FTP_PASSWORD=""
+
+
+### Add new editions
+
+heroku run bash
+cd utils
+node app.js anaheim-gazette
+
+### Update edition pages
+
+ssh to media server
+(make sure bash is running python2.7 and dependencies are installed)
+cd pdf-page-counter
+python counter.py
