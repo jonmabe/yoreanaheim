@@ -13,7 +13,7 @@ for slug in slugs:
     for root, dirs, files in os.walk(media +"/"+ slug):
             for file in files:
                     path = root +'/'+ file
-                    url = "http://"+ path.replace("/home/broadwayites/", "")
+                    url = "//"+ path.replace("/home/broadwayites/", "")
                     fo = open(path,'rb')
                     pdf = PdfFileReader(fo)
                     pages = pdf.getNumPages()
@@ -24,6 +24,6 @@ for slug in slugs:
                     conn.commit()
                     cur.close()
 
-                    print(path, pages)
+                    print(path, pages, url)
 
 conn.close()
