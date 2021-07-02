@@ -60,14 +60,16 @@ $env:FTP_PASSWORD=""
 
 
 ### Add new editions
-
+on local
+```
 heroku run bash
 cd utils
 node app.js anaheim-gazette
+```
 
 ### Update edition pages
-
-ssh to media server
-(make sure bash is running python2.7 and dependencies are installed)
+ssh to media server and make sure bash is running python2.7 and dependencies are installed.
+```
 cd pdf-page-counter
 python counter.py
+```
