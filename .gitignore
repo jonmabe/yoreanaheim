@@ -10,3 +10,4 @@ dist
 apidoc
 *.log
 app/build/*
+package-lock.json
