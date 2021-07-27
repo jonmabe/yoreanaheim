@@ -7,6 +7,7 @@ module.exports = function(sequelize, DataTypes) {
     name: DataTypes.STRING,
     pages: DataTypes.INTEGER,
     pdf: DataTypes.STRING,
+    label: DataTypes.STRING,
     edition_number: DataTypes.STRING,
     notes: DataTypes.TEXT,
     text_content: DataTypes.TEXT

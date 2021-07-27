@@ -58,13 +58,18 @@ c.on('ready', function() {
       c.list(path, function(err, list) {
         list.forEach(function(editionItem){
           if(editionItem.type != '-') return;
-          var re = /(\w{2})-(\d{4})-0*(\d{1,2})-0*(\d{1,2})\.pdf/i;
+          var re = /(\w{2})-(\d{4})-0*(\d{1,2})-0*(\d{1,2})(\w+)?\.pdf/i;
           var path = "//"+ rootDir +"/"+ yearItem.name +"/"+ editionItem.name;
           var nameMatch = re.exec(editionItem.name);
           if(nameMatch != null){
             var editionDate = new Date(parseInt(nameMatch[2]), parseInt(nameMatch[3]) - 1, parseInt(nameMatch[4]));
             var editionName = dateFormat(editionDate, "fullDate");
 						var pages = 1;
+            var label = '';
+
+            if(nameMatch[5]){
+              label = nameMatch[5];
+            }
 						/*
 						var pdfParser = new pdf2json();
 
@@ -87,6 +92,7 @@ c.on('ready', function() {
               name: editionName,
               pages: pages,
               pdf: path,
+              label: label,
               edition_number: null,
               notes: null,
               text_content: null

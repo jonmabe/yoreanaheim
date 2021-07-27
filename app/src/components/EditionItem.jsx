@@ -9,8 +9,19 @@ export default class EditionItem extends React.Component {
   render() {
 		var d = moment(this.props.edition.edition_date);
 		var editionName = d.tz('UTC').format('MMMM D, YYYY (dddd)');
+		var label = '';
+		if (this.props.edition.label){
+			switch(this.props.edition.label){
+				case 'd': label = 'Daily'; break;
+				case 'sw': label = 'Semi-Weekly'; break;
+				case 'm': label = 'Monthly'; break;
+				case 'w': label = 'Weekly'; break;
+				default: 'Daily'; break;
+			}
+			label = ' ('+ label + ')';
+		}
   	return <a href={`${this.props.edition.pdf}`} target='_blank' className="list-group-item d-flex align-items-center list-group-item-action justify-content-between">
-			{editionName}
+			{editionName}{label}
 			<span className="badge badge-primary badge-pill">{this.props.edition.pages.toLocaleString()}</span>
 		</a>;
   }

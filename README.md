@@ -11,8 +11,10 @@ $env:DATABASE_URL="postgres://postgres:Postgres-1234@localhost:5432/gazetteer"
 ```
 Bash
 ```
-export DATABASE_URL="postgres://postgresql:Postgres-1234@localhost:5432/gazetteer"
+export DATABASE_URL="postgres://gazetteer:gazetteer-1234@localhost:5432/gazetteer"
 ```
+
+create user gazetteer with encrypted password 'gazetteer-1234';
 
 ### Build Webpack
 Bash

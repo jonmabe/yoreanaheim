@@ -2,6 +2,7 @@
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
+    return Promise.all([ 
       queryInterface.addColumn(
         'publications',
         'about_excerpt',
@@ -18,12 +19,13 @@ module.exports = {
           allowNull: true
         }
       )
+    ]);
   },
 
   down: function (queryInterface, Sequelize) {
-    return [
+    return Promise.all([
       queryInterface.removeColumn('publications', 'about_excerpt'),
       queryInterface.removeColumn('publications', 'about')
-    ];
+    ]);
   }
 };
